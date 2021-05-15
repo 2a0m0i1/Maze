@@ -59,6 +59,7 @@ class ViewController: UIViewController {
                     view.addSubview(wallView)
                     wallRectArray.append(wallView.frame)
                     
+                    
                 case 2://スタート地点
                     startView = createView(x: x, y: y, width: cellWidth, height: cellHeight, offsetX: cellOffsetX, offsetY: cellOffsetY)
                     startView.backgroundColor = UIColor.green
@@ -73,7 +74,7 @@ class ViewController: UIViewController {
                     break
                 }
             }
-            
+        }
             //playerViewを生成
             playerView = UIView(frame: CGRect(x: 0, y: 0, width: cellWidth / 6, height: cellHeight / 6))
             playerView.center = startView.center
@@ -85,7 +86,6 @@ class ViewController: UIViewController {
             playerMotionManager.accelerometerUpdateInterval = 0.02
             
             startAccelerometer()
-        }
         
     }
     
@@ -123,9 +123,9 @@ class ViewController: UIViewController {
                 self.speedX = 0
                 posX = self.screenSize.width - (self.playerView.frame.width / 2)
             }
-            if posX >= self.screenSize.height - (self.playerView.frame.height / 2) {
-                self.speedX = 0
-                posX = self.screenSize.height - (self.playerView.frame.height / 2)
+            if posY >= self.screenSize.height - (self.playerView.frame.height / 2) {
+                self.speedY = 0
+                posY = self.screenSize.height - (self.playerView.frame.height / 2)
             }
             
             for wallRect in self.wallRectArray{
